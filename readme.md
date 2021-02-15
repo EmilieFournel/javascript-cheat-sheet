@@ -67,14 +67,28 @@ var el = document.querySelector(".maclasse");
 ## La fonction addEventListener()
 
 ### Que fait la fonction ?
-...
+La méthode addEventListener d'EvenTarget  installe une fonction à appeler chaque fois que l'événement spécifié est envoyé à la cible. Les cibles courantes sont un Element, le Document lui-même et une Window, mais elle peut être tout objet prenant en charge les évènements comme `[XMLHttpRequest]
 
 ### Pourquoi l'utiliser ?
-...
+"addEventListener" fonctionne en ajoutant une fonction, ou un objet implémentant EventListener, à la liste des écouteurs d'évènements du type d'évènement spécifié dans la EventTarget dans laquelle il est appelé.
 
 ### Exemple de code:
 ```javascript
-// CODE
+// CODE ```
+// Fonction pour changer le contenu de t2
+function modifierTexte() {
+  var t2 = document.getElementById("t2");
+  if (t2.firstChild.nodeValue == "trois") {
+    t2.firstChild.nodeValue = "deux";
+  } else {
+    t2.firstChild.nodeValue = "trois";
+  }
+}
+
+// Ajouter un écouteur d'évènements à la table
+var el = document.getElementById("aLExterieur");
+el.addEventListener("click", modifierTexte, false);
+
 ```
 
 ## La fonction stopPropagation()
