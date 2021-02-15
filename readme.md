@@ -1,3 +1,4 @@
+
 # Introduction
 
 L'objectif du document est la création d'une *cheat sheet* ou "feuille de triche". 
@@ -36,27 +37,31 @@ console.log(element);
 ## La fonction GetElementsByClassName()
 
 ### Que fait la fonction ?
-...
+La méthode GetElementsByClassName retourne une collection HTML  contenant une référence sur tous les éléments ayant les noms de classes passés en paramètre. Quand la méthode est appelée sur l'objet document, la recherche s'effectue dans le document complet, noeud racine compris.
 
 ### Pourquoi l'utiliser ?
 ...
 
 ### Exemple de code:
 ```javascript
-// CODE
+// CODE ```
+element.getElementsByClassName('test');
 ```
+
 
 ## La fonction querySelector() et querySelectorAll()
 
 ### Que fait la fonction ?
-...
+La méthode querySelector (et querySelectorALL) de l'interface Document retourne le premier Element  dans le document correspondant au sélecteur - ou groupe de sélecteurs - spécifié(s), ou `null` si aucune correspondance n'est trouvée.
 
 ### Pourquoi l'utiliser ?
 ...
 
 ### Exemple de code:
 ```javascript
-// CODE
+// CODE```
+var el = document.querySelector(".maclasse");
+
 ```
 
 ## La fonction addEventListener()
