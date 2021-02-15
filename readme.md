@@ -94,10 +94,10 @@ el.addEventListener("click", modifierTexte, false);
 ## La fonction stopPropagation()
 
 ### Que fait la fonction ?
-...
+Évite que l'évènement courant ne se propage plus loin dans les phases de capture et de déploiement.
 
 ### Pourquoi l'utiliser ?
-...
+Pour éviter que...
 
 ### Exemple de code:
 ```javascript
@@ -107,14 +107,61 @@ el.addEventListener("click", modifierTexte, false);
 ## La fonction addEventListener('mousemove', maFonction)
 
 ### Que fait la fonction ?
-...
+L'évènement `mousemove` est déclenché à partir d'un élément lorsqu'un dispositif de pointage (ex. une souris) est déplacé lorsque le curseur est à l'intérieur de l'élément.
 
 ### Pourquoi l'utiliser ?
 ...
 
 ### Exemple de code:
 ```javascript
-// CODE
+// CODE```
+// Un booléen qui, lorsqu'il est vrai, indique que le déplacement de
+// la souris entraîne un dessin sur le canevas
+let isDrawing = false;
+let x = 0;
+let y = 0;
+
+const myPics = document.getElementById('myPics');
+const context = myPics.getContext('2d');
+
+// On récupère le décalage du canevas en x et y par rapport aux bords
+// de la page
+const rect = myPics.getBoundingClientRect();
+
+// On ajoute les gestionnaires d'évènements pour mousedown, mousemove
+// et mouseup
+myPics.addEventListener('mousedown', e => {
+  x = e.clientX - rect.left;
+  y = e.clientY - rect.top;
+  isDrawing = true;
+});
+
+myPics.addEventListener('mousemove', e => {
+  if (isDrawing === true) {
+    drawLine(context, x, y, e.clientX - rect.left, e.clientY - rect.top);
+    x = e.clientX - rect.left;
+    y = e.clientY - rect.top;
+  }
+});
+
+window.addEventListener('mouseup', e => {
+  if (isDrawing === true) {
+    drawLine(context, x, y, e.clientX - rect.left, e.clientY - rect.top);
+    x = 0;
+    y = 0;
+    isDrawing = false;
+  }
+});
+
+function drawLine(context, x1, y1, x2, y2) {
+  context.beginPath();
+  context.strokeStyle = 'black';
+  context.lineWidth = 1;
+  context.moveTo(x1, y1);
+  context.lineTo(x2, y2);
+  context.stroke();
+  context.closePath();
+}
 ```
 
 ## La fonction parseInt()
